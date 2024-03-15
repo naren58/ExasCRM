@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  backendApp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: backendapp-image
+    container_name: backendapp-container
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATA_MONGODB_HOST: mongodb
+      SPRING_DATA_MONGODB_PORT: 27017
+      SPRING_DATA_MONGODB_DATABASE: AuthenticationDetails
+ 
+  mongodb:
+    image: mongo
+    container_name: mongodb-container
+    ports:
+      - "27017:27017"
+
+
+
+
+
+
+
