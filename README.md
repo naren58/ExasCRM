@@ -1,2 +1,2 @@
 # crm
-crm project to provide open authorization and persist the authenticated user details
+This project provides open authorization and persist the authenticated user details.
