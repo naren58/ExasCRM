@@ -71,9 +71,13 @@ public class CustomOAuth2User extends DefaultOAuth2UserService{
 
 	private void registerNewUser(OAuth2UserRequest oauth2Request, OAuth2UserInfo oauth2UserInfo) {
 		logger.info("CustomOAuth2User.registerNewUser");
+		logger.info(oauth2UserInfo.getName().toLowerCase());
+		
+		
 		User user = User.builder().name(oauth2UserInfo.getName()).id(oauth2UserInfo.getId())
 				.email(oauth2UserInfo.getEmail()).imageUrl(oauth2UserInfo.getImageUrl())
-				.provider(AuthProvider.valueOf(oauth2Request.getClientRegistration().getRegistrationId())).build();
+				.provider(AuthProvider.valueOf(oauth2Request.getClientRegistration().getRegistrationId().toUpperCase())).build();
+		logger.info(user.toString());
 		userRepo.save(user);
 	}
 

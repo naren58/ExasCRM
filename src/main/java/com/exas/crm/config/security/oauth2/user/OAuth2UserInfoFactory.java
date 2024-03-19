@@ -12,10 +12,14 @@ public class OAuth2UserInfoFactory {
 	
 	public static OAuth2UserInfo getOAuth2UserInfo(Map<String, Object> attributes, String registrationId) {
 		logger.info("OAuth2UserInfoFactory.getOAuth2UserInfo");
-		if(registrationId.equalsIgnoreCase(AuthProvider.GOOGLE.toString())) 
+		if(registrationId.equalsIgnoreCase(AuthProvider.GOOGLE.toString())) {
+			logger.info("Selected Google as the Provider");
 			return new GoogleOAuth2UserInfo(attributes);
-		else if(registrationId.equalsIgnoreCase(AuthProvider.FACEBOOK.name()))
+		}
+		else if(registrationId.equalsIgnoreCase(AuthProvider.FACEBOOK.name())) {
+			logger.info("Selected Facebook as the Provider");
 			return new FacebookOAuth2UserInfo(attributes);
+		}
 		else
 			throw new OAuth2AuthenticationProcessingException(registrationId+": This provider is not supported");
 			
