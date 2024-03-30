@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backendapp-deployment
+  name: crm-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: backendapp
+      app: crm
   template:
     metadata:
       labels:
-        app: backendapp
+        app: crm
     spec:
       containers:
-        - name: backendapp
-          image: backendapp-image
+        - name: crm
+          image: crm-image
           ports:
             - containerPort: 8080
           env:
