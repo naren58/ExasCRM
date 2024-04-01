@@ -2,6 +2,8 @@ package com.exas.crm.controller;
 
 
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,11 @@ import lombok.RequiredArgsConstructor;
 public class LoginController {
 	
 	private final UserService userServiceImpl;
+	
+	 @Autowired
+	    public LoginController(UserService userServiceImpl) {
+	        this.userServiceImpl = userServiceImpl;
+	    }
 	
 	@GetMapping("/login")
 	public String loginPage() {

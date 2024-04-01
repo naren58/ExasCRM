@@ -3,6 +3,7 @@ package com.exas.crm.config.security.oauth2;
 import java.util.Optional;
 import java.util.logging.Logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
@@ -25,8 +26,14 @@ import lombok.RequiredArgsConstructor;
 public class CustomOAuth2User extends DefaultOAuth2UserService{
 
 	private static final Logger logger = Logger.getLogger(CustomOAuth2User.class.getName());
-
+    
+	
 	private final UserRepository userRepo;
+	
+	@Autowired
+	public CustomOAuth2User(UserRepository userRepo){
+	  this.userRepo = userRepo;
+	}
 
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest oauth2Request) throws OAuth2AuthenticationException {
