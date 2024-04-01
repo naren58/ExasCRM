@@ -6,12 +6,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-@EnableAutoConfiguration 
+@EnableAutoConfiguration
 public class ExasCrmApplication {
 
 	public static void main(String[] args) {
         System.out.println("Om Vigneshwaraaya Namahaa");
 		SpringApplication.run(ExasCrmApplication.class, args);
 	}
-	
+
 }

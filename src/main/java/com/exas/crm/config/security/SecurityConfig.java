@@ -15,7 +15,7 @@ public class SecurityConfig {
 	private static final Logger logger = Logger.getLogger(SecurityConfig.class.getName());
 
 	private final CustomOAuth2User customOAuth2User;
-	
+
 	public SecurityConfig(CustomOAuth2User customOAuth2User) {
         this.customOAuth2User = customOAuth2User;
         logger.info("CustomOAuth2User bean injected successfully.");
@@ -24,7 +24,7 @@ public class SecurityConfig {
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-		
+
 		http.authorizeHttpRequests(authorize -> authorize.requestMatchers("/login").permitAll()
 				.anyRequest().authenticated())
 				.oauth2Login(oauth2 -> oauth2
