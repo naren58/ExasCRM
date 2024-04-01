@@ -11,12 +11,12 @@ import org.springframework.security.oauth2.core.oidc.IdTokenClaimNames;
 
 @Configuration
 public class ClientRegistrationConfig {
-	
+
 	@Bean
 	public ClientRegistrationRepository clientRegistrationRepository() {
 		return new InMemoryClientRegistrationRepository(this.googleClientRegistration(),this.facebookClientRegistration());
 	}
-	
+
 
 	private ClientRegistration googleClientRegistration() {
 		return ClientRegistration.withRegistrationId("google")
@@ -32,7 +32,7 @@ public class ClientRegistrationConfig {
 				.userNameAttributeName(IdTokenClaimNames.SUB).jwkSetUri("https://www.googleapis.com/oauth2/v3/certs")
 				.clientName("crm-google-login").build();
 	}
-	
+
 	private ClientRegistration facebookClientRegistration() {
 		return ClientRegistration.withRegistrationId("facebook")
 			.clientId("368660299401945")

@@ -9,7 +9,7 @@ import com.exas.crm.model.AuthProvider;
 public class OAuth2UserInfoFactory {
 
 	private static final Logger logger = Logger.getLogger(OAuth2UserInfoFactory.class.getName());
-	
+
 	public static OAuth2UserInfo getOAuth2UserInfo(Map<String, Object> attributes, String registrationId) {
 		logger.info("OAuth2UserInfoFactory.getOAuth2UserInfo");
 		if(registrationId.equalsIgnoreCase(AuthProvider.GOOGLE.toString())) {
@@ -19,11 +19,11 @@ public class OAuth2UserInfoFactory {
 		else if(registrationId.equalsIgnoreCase(AuthProvider.FACEBOOK.name())) {
 			logger.info("Selected Facebook as the Provider");
 			return new FacebookOAuth2UserInfo(attributes);
-		}
-		else
+		} else {
 			throw new OAuth2AuthenticationProcessingException(registrationId+": This provider is not supported");
-			
+		}
+
 	}
-	
+
 
 }
